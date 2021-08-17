@@ -15,16 +15,9 @@ services:
     working_dir: /work
 
   db:
-    image: mysql:8.0
+    build: ./infra/mysql
     volumes:
       - db-store:/var/lib/mysql
-      - ./infra/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
-    environment:
-      - MYSQL_DATABASE=test
-      - MYSQL_USER=testuser
-      - MYSQL_PASSWORD=secret
-      - MYSQL_ROOT_PASSWORD=secret
-      - TZ=Asia/Tokyo
 
 volumes:
   db-store:
